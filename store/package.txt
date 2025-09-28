@@ -1,0 +1,8 @@
+[
+  {
+    "name": "store",
+    "version": "1.0",
+    "description": "a store",
+    "source_file": "store.sprite3"
+  }
+]
