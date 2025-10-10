@@ -1,6 +1,6 @@
 // --- script.js ---
 
-const JSON_URL = 'https://raw.githubusercontent.com/Alejandrix2456github/OPKG-Rep/main/store/packages.json';
+const JSON_URL = 'https://raw.githubusercontent.com/Alejandrix2456github/OPKG-Rep/main/';
 const catalogDiv = document.getElementById('package-catalog');
 
 fetch(JSON_URL)
