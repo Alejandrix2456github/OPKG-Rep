@@ -1,29 +1,45 @@
 // --- script.js ---
 
-const JSON_URL = 'https://raw.githubusercontent.com/Alejandrix2456github/OPKG-Rep/main/store/package.json';
+// CRITICAL FIX: Using jsDelivr to bypass CORS issues on GitHub Pages.
+// REPLACE 'Alejandrix2456github' with your actual username if it's different.
+const JSON_URL = 'https://cdn.jsdelivr.net/gh/Alejandrix2456github/OPKG-Rep@main/store/packages.json';
 const catalogDiv = document.getElementById('package-catalog');
+
+// Function to safely create HTML content for an error
+const displayError = (message) => {
+    catalogDiv.innerHTML = `<p style="color: red; font-weight: bold;">Error loading catalog:</p><p>${message}</p>`;
+};
 
 fetch(JSON_URL)
     .then(response => {
+        // Check if the HTTP status code is OK (200-299)
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            // Throw an error with the status to help with debugging
+            throw new Error(`HTTP Status ${response.status} (${response.statusText}). Check your JSON file path.`);
         }
         return response.json();
     })
     .then(packages => {
-        // Create the table element
+        if (!Array.isArray(packages)) {
+            throw new Error("Invalid JSON format. Expected an array.");
+        }
+
+        // Build the table structure
         let htmlContent = '<table>';
         htmlContent += '<tr><th>Package Name</th><th>Version</th><th>Description</th><th>Install Command</th></tr>';
 
-        // Iterate over the JSON array
+        // Populate rows with package data
         packages.forEach(pkg => {
-            // Build the install command string for users
-            const installCmd = `opkg install ${pkg.name}`;
+            // Ensure fields exist to prevent errors
+            const name = pkg.name || 'N/A';
+            const version = pkg.version || 'N/A';
+            const description = pkg.description || 'No description provided.';
+            const installCmd = `opkg install ${name}`;
 
             htmlContent += `<tr>
-                <td>${pkg.name}</td>
-                <td>${pkg.version}</td>
-                <td>${pkg.description}</td>
+                <td>${name}</td>
+                <td>${version}</td>
+                <td>${description}</td>
                 <td><code>${installCmd}</code></td>
             </tr>`;
         });
@@ -32,7 +48,8 @@ fetch(JSON_URL)
         catalogDiv.innerHTML = htmlContent;
     })
     .catch(error => {
-        catalogDiv.innerHTML = `<p style="color: red;">Failed to load package catalog: ${error.message}</p>`;
+        console.error('Fetch Error:', error);
+        displayError(error.message);
     });
 
 // --- End of script.js ---
