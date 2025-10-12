@@ -1,0 +1,26 @@
+{
+  "project_components": [
+    {
+      "name": "TextEditor",
+      "version": "1.0",
+      "description": "A basic application for creating and editing text files.",
+      "source_file": "TextEditor.sprite3"
+    },
+    {
+      "name": "GhostFramework",
+      "version": "1.0.1",
+      "description": "A security framework designed for the Open Kernel to enhance system integrity and protection.",
+      "source_file": "GFW.sprite3"
+    },
+    {
+      "name": "Store",
+      "version": "1.0",
+      "description": "An application or component managing an in-program marketplace for assets or services.",
+      "source_file": "store.sprite3"
+    }
+  ],
+  "metadata": {
+    "count": 3,
+    "format_version": "1.0"
+  }
+}
