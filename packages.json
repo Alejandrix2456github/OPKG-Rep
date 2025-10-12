@@ -1,5 +1,5 @@
 {
-  "project_components": [
+  "packages": [
     {
       "name": "TextEditor",
       "version": "1.0",
