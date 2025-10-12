@@ -1,8 +1,5 @@
 // --- script.js ---
-
-// CRITICAL FIX: Using jsDelivr to bypass CORS issues on GitHub Pages.
-// REPLACE 'Alejandrix2456github' with your actual username if it's different.
-const JSON_URL = 'https://cdn.jsdelivr.net/gh/Alejandrix2456github/OPKG-Rep@main/packages.json';
+const JSON_URL = 'https://api.github.com/repos/Alejandrix2456github/OPKG-Rep/contents/packages.json?ref=main';
 const catalogDiv = document.getElementById('package-catalog');
 
 // Function to safely create HTML content for an error
