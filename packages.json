@@ -1,5 +1,4 @@
-{
-  "packages": [
+[
     {
       "name": "TextEditor",
       "version": "1.0",
@@ -18,9 +17,4 @@
       "description": "An application or component managing an in-program marketplace for assets or services.",
       "source_file": "store.sprite3"
     }
-  ],
-  "metadata": {
-    "count": 3,
-    "format_version": "1.0"
-  }
-}
+]
