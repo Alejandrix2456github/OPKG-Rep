@@ -1,5 +1,5 @@
 // --- script.js ---
-const JSON_URL = 'https://raw.githubusercontent.com/Alejandrix2456github/OPKG-Rep/main/packages.json';
+const JSON_URL = 'https://cdn.jsdelivr.net/gh/Alejandrix2456github/OPKG-Rep@main/packages.json';
 const catalogDiv = document.getElementById('package-catalog');
 
 // Function to safely create HTML content for an error
